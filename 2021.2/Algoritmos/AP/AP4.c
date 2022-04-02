@@ -13,7 +13,6 @@ void merge(int *array, int l, int r) {
         else if(temp[i1] <= temp[i2]) array[curr] = temp[i1++];
         else array[curr] = temp[i2++];
     }
-
 }
 
 void mergeSort(int *array, int l, int r) {

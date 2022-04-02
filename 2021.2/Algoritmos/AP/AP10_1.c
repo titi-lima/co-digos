@@ -193,13 +193,11 @@ void BFS(G *g, int v) {
         preVisit(g, v);
         w = first(g, v);
         while (w < g->numVertices) {
-            //printf("teste\n");
             if (!isVisited(g, w)) {
                 setMark(g, w, 1);
                 enqueue(Q, w);
             }
             w = next(g, v, w);
-            //printf("%d\n", w);
         }
         //posVisit(g, v);
     }
@@ -228,7 +226,7 @@ void graphTraverse(G *g, char traversal, int start) {
         }
     }
     printf("\n");
-    clock = 0;
+    clock = 1;
 }
 
 int main() {
