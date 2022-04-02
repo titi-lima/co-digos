@@ -1,0 +1,10 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/tiago/Documents/códigos/2021.1/o_homem-aranha_que_se_perdeu_na_historia'
+make game
+ 
+make[1]: Entering directory `/Users/tiago/Documents/códigos/2021.1/o_homem-aranha_que_se_perdeu_na_historia'
+clang -o game main.c -Wall -std=c99 -D_DEFAULT_SOURCE -Wno-missing-braces -s -O1 -I. -I/Users/tiago/src -I/Users/tiago/src/external -L. -L/Users/tiago/src -L/Users/tiago/src -lraylib -framework OpenGL -framework OpenAL -framework Cocoa -DPLATFORM_DESKTOP
+make[1]: Leaving directory `/Users/tiago/Documents/códigos/2021.1/o_homem-aranha_que_se_perdeu_na_historia'
+ 
+make: Leaving directory `/Users/tiago/Documents/códigos/2021.1/o_homem-aranha_que_se_perdeu_na_historia'
+ 

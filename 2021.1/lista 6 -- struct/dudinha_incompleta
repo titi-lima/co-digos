@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+typedef struct {
+    char nome[40];
+    int peso;
+    float preco;
+    int serial;
+} objeto[100]
+
+typedef struct {
+    double x;
+    double y;
+} veiculo[100]
+
+int main() {
+    int nobj, nvei, k, id;
+    objeto objeto;
+    veiculo veiculo;
+    //objeto auxiliar;
+    scanf("%d %d", &nobj, &nvei);
+    for(k=0; k<nvei; ++k) {
+        scanf("%lf %lf", &veiculo[k].x, &veiculo[k].y);
+    }
+    for(k=0; k<nobj; ++k) {
+        scanf(" %s", objeto[k].nome);
+        scanf(" %d", &objeto[k].peso);
+        scanf(" %f", &objeto[k].preco);
+    }
+    //ver os serial numbers
+
+    scanf("")
+
+    return 0;
+}
