@@ -127,11 +127,11 @@ int main() {
         else if (mat[eq][c] < 0) {
             printf("\nCaso o problema exija solucoes naturais, %d nao eh uma solucao valida.\n\nLogo, eh preciso achar um 't' tal que %d - (%d/MDC(%d,%d)).t > 0 e %d + (%d/MDC(%d,%d)).t > 0.\n\n", mat[eq][c], k, mat[en2][c], mat[en1][c], mat[en2][c], mat[eq][c], mat[en1][c], mat[en1][c], mat[en2][c]);
             float K = k;
-            t = K / (mat[en2][c] * mdc);
+            t = K * mdc / mat[en2][c];
             printf("Sabe-se que (MDC %d,%d) = %d, Com isso:\n", mat[en1][c], mat[en2][c], mdc);
             printf("\nDesenvolvendo %d - (%d/%d).t > 0, temos t < %d/%d -> t < %.2f.\n", k, mat[en2][c], mdc, k, mat[en2][c] / mdc, t);
             K = mat[eq][c];
-            T = K * -1 / (mat[en1][c] * mdc);
+            T = K * -1 * mdc/ mat[en1][c];
             printf("Desenvolvendo %d + (%d/%d).t > 0, temos t > %d/%d -> t > %.2f.\n", mat[eq][c], mat[en1][c], mdc, -1*mat[eq][c], mat[en1][c] / mdc, T);
             if (floor(t - T) != 0) {
                 v1 = t;
