@@ -40,6 +40,7 @@ Queue* create_queue() {
 Stack* create_stack() {
     Stack *s = NULL;
     s = (Stack*) malloc(sizeof(Stack));
+    s->top = NULL;
     s->size = 0;
     return s;
 }
@@ -93,6 +94,20 @@ void clear_stack(Stack *s) {
     free(s);
 }
 
+void freeMatrix(int **matrix, int size) {
+    int i;
+    for (i = 0; i < size; i++) {
+        free(matrix[i]);
+    }
+    free(matrix);
+}
+
+void clear_graph(G *g) {
+    freeMatrix(g->matrix, g->numVertices);
+    free(g->mark);
+    free(g);
+}
+
 void push(Stack *s, int data) {
     s->top = create_node(data, s->top);
     s->size++;
@@ -140,8 +155,6 @@ void setEdge(G *g, int i, int j, int wt) {
     if(wt != 0) { // adequado para grafos ponderados
         if(!isEdge(g, i, j)) g->numEdge++;
         g->matrix[i][j] = wt;
-        if(!isEdge(g, j, i)) g->numEdge++; // nao dirigido
-        g->matrix[j][i] = wt;
     }
 }
 
@@ -229,31 +242,39 @@ void graphTraverse(G *g, char traversal, int start) {
     clock = 1;
 }
 
+void printStack(Stack *s) {
+    Node* temp = s->top;
+    while(temp!=NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+
+void toposort(G *g, int v, Stack *s) {
+    setMark(g, v, 1);
+    int w = first(g, v);
+    while (w < g->numVertices) {
+        if(!isVisited(g, w)) toposort(g, w, s);
+        w = next(g, v, w);
+    }
+    push(s, v);
+}
+
+
 int main() {
     int n, q, i, j, start;
     char com[4];
     scanf("%d %d", &n, &q);
     G *g = create_graph(n);
     while(q--) {
-        scanf(" %s", com);
-        switch(com[0]) {
-            case 'a': {
-                scanf("%d %d", &i, &j);
-                setEdge(g, i, j, 1); // passo 1 pq nao eh ponderado?
-                break;
-            }
-            case 'D': {
-                scanf("%d", &start);
-                graphTraverse(g, 'd', start);
-                break;
-            }
-            case 'B': {
-                scanf("%d", &start);
-                graphTraverse(g, 'b', start);
-                break;
-            }
-        }
+        scanf("%d %d", &i, &j);
+        setEdge(g, i, j, 1);
     }
-
+    Stack *s = create_stack();
+    toposort(g, 0, s);
+    printStack(s);
+    clear_stack(s);
+    clear_graph(g);
     return 0;
 }
