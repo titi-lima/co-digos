@@ -6,7 +6,7 @@
 int main() {
     srand(time(0));
     char str[100001];
-    int com, s, n=25, k;
+    int com, s, n=50, k;
     sprintf(str, "%d", n);
     printf("%s\n", str);
     while(n--) {
