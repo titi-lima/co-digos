@@ -10,6 +10,7 @@ typedef struct {
     int numVertices;
     int* mark;
     int ahmad;
+    int maxdist;
 } G;
 
 typedef struct {
@@ -104,6 +105,7 @@ G* create_graph(int n) {
     g->mark = (int*)calloc(n, sizeof(int));
     g->numEdge = 0;
     g->numVertices = 0;
+    g->maxdist = 0;
     for(int i=0; i<300; ++i) for(int j=0; j<300; ++j) g->matrix[i][j] = 0;
     return g;
 }
@@ -146,12 +148,13 @@ void preVisit(G *g, int v, int clock){ //transformar mark em uma struct? no cont
     ++clock;
 }
 void posVisit(G *g, int v){
-    g->mark[v] = clock;
-    ++clock;
+    //g->mark[v] = clock;
+    //++clock;
 }
 
 void setDist(G *g, Player *p, int v, int dist) {
-    p[v].dist = dist;
+    if(dist>g->maxdist) g->maxdist = dist;
+    if(dist<p[v].dist) p[v].dist = dist;
 }
 
 void BFS(G *g, int v, Player* p) {
@@ -162,8 +165,8 @@ void BFS(G *g, int v, Player* p) {
     setMark(g, v, 1);
     while (Q->size > 0){
         //toda vez que ele dequeua, eh +1 no clock
-        ++dist;
         v = dequeue(Q);
+        dist = p[v].dist+1;
         w = first(g, v);
         while (w < g->numVertices) {
             if (!isVisited(g, w)) { // possivelmente o setdist vai bater antes dessa condicao
@@ -199,28 +202,79 @@ void printMatriz(bool matrix[300][300], int n) {
     }
 }
 
+void swap(Player *p, int i, int j) {
+    Player temp;
+    temp = p[i];
+    p[i] = p[j];
+    p[j] = temp;
+}
+
+int HoarePartition(Player *p, int l, int r) {
+    char s[21];
+    strcpy(s, p[l].nome);
+    int i = l;
+    int j = r+1;
+    do {
+        do {
+            ++i;
+        } while(strcasecmp(s, p[i].nome) > 0 && r > i);
+        do {
+            --j;
+        } while(strcasecmp(s, p[j].nome) < 0);
+        swap(p, i, j);
+    } while(i<j);
+    swap(p, i, j);
+    swap(p, l, j);
+    return j;
+}
+
+void Quicksort(Player *p, int l, int r) {
+    if(l<r) {
+        int s = HoarePartition(p, l, r);
+        Quicksort(p, l, s-1);
+        Quicksort(p, s+1, r);
+    }
+}
+
+void printResult(Player *p, G *g, int n) {
+    printf("%d\n", g->numVertices);
+    for(int k = 0; k <= n; ++k) {
+        for(int j = 0; j < g->numVertices; ++j) {
+            if(p[j].dist == k) printf("%s %d\n", p[j].nome, p[j].dist);
+        }
+    }
+    for(int j = 0; j < g->numVertices; ++j) {
+        if(p[j].dist == __INT_MAX__) printf("%s undefined\n", p[j].nome);
+    }
+
+}
+
 int main() {
     int n, q, k, cont=0, indexes[3];
+    G *g = NULL;
     char nome[21];
     scanf("%d", &n);
     while(n--) {
         Player *p = NULL;
-        G *g = create_graph(1); // dava pra passar tipo q*3 sla
+        g = create_graph(1); // dava pra passar tipo q*3 sla
         scanf(" %d", &q);
         for(k = 0; k < q*3; ++k) {
             //scannea os times, procura por um ahmad nele (enquanto procura se o jogador eh repetido) e se tiver, ja seta a aresta
             scanf(" %s", nome);
             p = newPlayer(g, p, nome, indexes, k%3);
-            printf("onde\n");
             if(k%3==2) {
                 setEdges(g, indexes[0], indexes[1], indexes[2]); //3 jogadores
             }
         }
         //se tudo der certo, nesse ponto, eu sei onde ta ahmad e ja setei a matriz de adjacencias
-        printMatriz(g->matrix, g->numVertices);
-        //BFS(g, g->ahmad, p);
-        clear_graph(g); // talvez n de certo isso
+        //printMatriz(g->matrix, g->numVertices);
+        BFS(g, g->ahmad, p);
+        Quicksort(p, 0, g->numVertices-1);
+        printResult(p, g, g->maxdist);
+        //for(int s = 0; s < g->numVertices; s++) printf("%d ", p[s].dist);
+
     }
+    clear_graph(g); // talvez n de certo isso
     return 0;
 }
 //criar funcao q aloca os vertices / funcao q checa se o vertice ja existe
