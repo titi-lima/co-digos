@@ -47,11 +47,12 @@ int HoarePartition(int *vet, int l, int r) {
     return j;
 }
 
-void Quicksort(int *vet, int l, int r) {
+void Quicksort(Array *a, int l, int r) {
     if(l<r) {
-        int s = HoarePartition(vet, l, r);
-        Quicksort(vet, l, s-1);
-        Quicksort(vet, s+1, r);
+        int s = HoarePartition(a->vet, l, r);
+        //printArray(a->vet, a->size);
+        Quicksort(a, l, s-1);
+        Quicksort(a, s+1, r);
     }
 }
 
@@ -62,7 +63,7 @@ int main() {
     scanf("%d", &ncasos);
     while(ncasos--) {
         a = scanArray(a);
-        Quicksort(a->vet, 0, a->size-1);
+        Quicksort(a, 0, a->size-1);
         printArray(a->vet, a->size);
     }
     free(a->vet);

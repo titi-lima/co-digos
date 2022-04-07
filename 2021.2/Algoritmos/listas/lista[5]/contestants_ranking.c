@@ -14,9 +14,9 @@ typedef struct {
 } G;
 
 typedef struct {
-    int v; // se pa eh so o indice
     char nome[21];
     int dist;
+    int v;
 } Player;
 
 struct Node {
@@ -50,13 +50,13 @@ Node *create_node(int data, Node* next) {
 Player *newPlayer(G* g, Player *p, char nome[21], int indexes[3], int k) {
     //checa se pode msm
     for(int i = 0; i < g->numVertices; ++i) { // sla man
-        if(!strcmp(nome, p[i].nome)) {
+        if(!strcasecmp(nome, p[i].nome)) {
             indexes[k] = i;
             return p;
         }
     }
     indexes[k] = g->numVertices;
-    if(!strcmp(nome, "ahmad")) g->ahmad = g->numVertices; // ainda n incrementei, isso ta certo
+    if(!strcasecmp(nome, "Ahmad")) g->ahmad = g->numVertices; // ainda n incrementei, isso ta certo
     ++(g->numVertices);
     p = (Player*) realloc(p, (g->numVertices)*sizeof(Player));
     p[g->numVertices-1].v = g->numVertices-1;
@@ -169,8 +169,8 @@ void BFS(G *g, int v, Player* p) {
         dist = p[v].dist+1;
         w = first(g, v);
         while (w < g->numVertices) {
+            setDist(g, p, w, dist);
             if (!isVisited(g, w)) { // possivelmente o setdist vai bater antes dessa condicao
-                setDist(g, p, w, dist);
                 setMark(g, w, 1);
                 enqueue(Q, w);
             }
@@ -237,13 +237,14 @@ void Quicksort(Player *p, int l, int r) {
 }
 
 void printResult(Player *p, G *g, int n) {
+    int k, j;
     printf("%d\n", g->numVertices);
-    for(int k = 0; k <= n; ++k) {
-        for(int j = 0; j < g->numVertices; ++j) {
+    for(k = 0; k <= n; ++k) {
+        for(j = 0; j < g->numVertices; ++j) {
             if(p[j].dist == k) printf("%s %d\n", p[j].nome, p[j].dist);
         }
     }
-    for(int j = 0; j < g->numVertices; ++j) {
+    for(j = 0; j < g->numVertices; ++j) {
         if(p[j].dist == __INT_MAX__) printf("%s undefined\n", p[j].nome);
     }
 
@@ -256,7 +257,7 @@ int main() {
     scanf("%d", &n);
     while(n--) {
         Player *p = NULL;
-        g = create_graph(1); // dava pra passar tipo q*3 sla
+        G *g = create_graph(1); // dava pra passar tipo q*3 sla
         scanf(" %d", &q);
         for(k = 0; k < q*3; ++k) {
             //scannea os times, procura por um ahmad nele (enquanto procura se o jogador eh repetido) e se tiver, ja seta a aresta
@@ -272,9 +273,9 @@ int main() {
         Quicksort(p, 0, g->numVertices-1);
         printResult(p, g, g->maxdist);
         //for(int s = 0; s < g->numVertices; s++) printf("%d ", p[s].dist);
-
+        free(p);
+        clear_graph(g); // talvez n de certo isso
     }
-    clear_graph(g); // talvez n de certo isso
     return 0;
 }
 //criar funcao q aloca os vertices / funcao q checa se o vertice ja existe
