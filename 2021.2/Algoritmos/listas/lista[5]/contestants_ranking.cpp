@@ -5,6 +5,7 @@
 #include <string.h>
 #include <queue>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -17,29 +18,33 @@ typedef struct {
     int maxdist;
 } G;
 
-typedef struct {
+class Player {
+public:
     string nome;
     int dist;
     int v;
-} Player;
+    Player(G* g, string name, int indexes[3], int k) {
+        if(name == "Ahmad") g->ahmad = g->numVertices; // ainda n incrementei, isso ta certo
+        ++(g->numVertices);
+        //a alocacao eh por aqui
+        nome.assign(name);
+        //cout << p[g->numVertices-1].nome << endl;
+        dist = __INT_MAX__;
+        g->mark = (int*)realloc(g->mark, g->numVertices*sizeof(int)); // mds pq tem tanta alocacao
+        g->mark[g->numVertices-1] = 0;
+    }
+};
 
-Player *newPlayer(G* g, Player *p, string name, int indexes[3], int k) {
-    //checa se pode msm
-    for(int i = 0; i < g->numVertices; ++i) { // sla man
+bool isNew(string name, vector<Player> const &p, int indexes[3], int k) {
+    int i=0;
+    for(i=0; i<p.size(); i++) {
         if(name == p[i].nome) {
             indexes[k] = i;
-            return p;
+            return false;
         }
     }
-    indexes[k] = g->numVertices;
-    if(name == "Ahmad") g->ahmad = g->numVertices; // ainda n incrementei, isso ta certo
-    ++(g->numVertices);
-    p[g->numVertices-1].nome.assign(name);
-    //cout << p[g->numVertices-1].nome << endl;
-    p[g->numVertices-1].dist = __INT_MAX__;
-    g->mark = (int*)realloc(g->mark, g->numVertices*sizeof(int));
-    g->mark[g->numVertices-1] = 0;
-    return p;
+    indexes[k] = i;
+    return true;
 }
 
 G* create_graph(int n) {
@@ -85,12 +90,12 @@ bool isVisited(G *g, int v) {
     return getMark(g, v) != 0;
 }
 
-void setDist(G *g, Player *p, int v, int dist) {
+void setDist(G *g, vector<Player> &p, int v, int dist) {
     if(dist>g->maxdist) g->maxdist = dist;
     if(dist<p[v].dist) p[v].dist = dist;
 }
 
-void BFS(G *g, int v, Player* p) {
+void BFS(G *g, int v, vector<Player> &p) {
     int w, dist=0;
     queue<int> q;
     q.push(v);
@@ -124,14 +129,14 @@ void setEdges(G *g, int i, int j, int k) {
     setEdge(g, k, i);
 }
 
-void swap(Player *p, int i, int j) {
+/*void swap(vector<Player> &p, int i, int j) {
     Player temp;
     temp = p[i];
     p[i] = p[j];
     p[j] = temp;
-}
+}*/
 
-int HoarePartition(Player *p, int l, int r) {
+int HoarePartition(vector<Player> &p, int l, int r) {
     string s;
     s = p[l].nome;
     int i = l;
@@ -143,14 +148,14 @@ int HoarePartition(Player *p, int l, int r) {
         do {
             --j;
         } while(s < p[j].nome);
-        swap(p, i, j);
+        swap(p[i], p[j]);
     } while(i<j);
-    swap(p, i, j);
-    swap(p, l, j);
+    swap(p[i], p[j]);
+    swap(p[l], p[j]);
     return j;
 }
 
-void Quicksort(Player *p, int l, int r) {
+void Quicksort(vector<Player> &p, int l, int r) {
     if(l<r) {
         int s = HoarePartition(p, l, r);
         Quicksort(p, l, s-1);
@@ -158,7 +163,7 @@ void Quicksort(Player *p, int l, int r) {
     }
 }
 
-void printResult(Player *p, G *g, int n) {
+void printResult(vector<Player> const &p, G *g, int n) {
     int k, j;
     cout << g->numVertices << endl;;
     for(k = 0; k <= n; ++k) {
@@ -175,8 +180,8 @@ int main() {
     int n, q, k, cont=0, indexes[3];
     cin >> n;
     string name;
-    Player *p = NULL;
-    p = new Player[1000];
+    vector<Player> p;
+    //p = new Player[1000];
     G* g = NULL;
     while(n--) {
         g = create_graph(1); // dava pra passar tipo q*3 sla
@@ -184,7 +189,7 @@ int main() {
         for(k = 0; k < q*3; ++k) {
             //scannea os times, procura por um ahmad nele (enquanto procura se o jogador eh repetido) e se tiver, ja seta a aresta
             cin >> name;
-            p = newPlayer(g, p, name, indexes, k%3);
+            if(isNew(name, p, indexes, k%3)) p.push_back(Player(g, name, indexes, k));
             if(k%3==2) {
                 setEdges(g, indexes[0], indexes[1], indexes[2]); //3 jogadores
             }
@@ -193,10 +198,10 @@ int main() {
         BFS(g, g->ahmad, p);
         Quicksort(p, 0, g->numVertices-1);
         printResult(p, g, g->maxdist);
-        //for(int s = 0; s < g->numVertices; s++) printf("%d ", p[s].dist);
-        //free(p);
+        p.clear();
         //clear_graph(g); // talvez n de certo isso
     }
+    p.shrink_to_fit();
     return 0;
 }
 //criar funcao q aloca os vertices / funcao q checa se o vertice ja existe

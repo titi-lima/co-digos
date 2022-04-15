@@ -170,7 +170,7 @@ void BFS(G *g, int v, Player* p) {
         w = first(g, v);
         while (w < g->numVertices) {
             setDist(g, p, w, dist);
-            if (!isVisited(g, w)) { // possivelmente o setdist vai bater antes dessa condicao
+            if (!isVisited(g, w)) {
                 setMark(g, w, 1);
                 enqueue(Q, w);
             }
