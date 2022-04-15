@@ -1,9 +1,8 @@
 #include <iostream>
-#include <stdlib.h>
-#include <stdbool.h>
 #include <limits.h>
-#include <string.h>
 #include <queue>
+#include <stdbool.h>
+#include <stdlib.h>
 #include <string>
 #include <vector>
 
@@ -13,7 +12,7 @@ typedef struct {
     bool matrix[300][300];
     int numEdge;
     int numVertices;
-    int* mark;
+    int *mark;
     int ahmad;
     int maxdist;
 } G;
@@ -23,22 +22,22 @@ public:
     string nome;
     int dist;
     int v;
-    Player(G* g, string name, int indexes[3], int k) {
-        if(name == "Ahmad") g->ahmad = g->numVertices; // ainda n incrementei, isso ta certo
+    Player(G *g, string name, int indexes[3], int k) {
+        if (name == "Ahmad") g->ahmad = g->numVertices; // ainda n incrementei, isso ta certo
         ++(g->numVertices);
-        //a alocacao eh por aqui
+        // a alocacao eh por aqui
         nome.assign(name);
-        //cout << p[g->numVertices-1].nome << endl;
+        // cout << p[g->numVertices-1].nome << endl;
         dist = __INT_MAX__;
-        g->mark = (int*)realloc(g->mark, g->numVertices*sizeof(int)); // mds pq tem tanta alocacao
-        g->mark[g->numVertices-1] = 0;
+        g->mark = (int *)realloc(g->mark, g->numVertices * sizeof(int)); // mds pq tem tanta alocacao
+        g->mark[g->numVertices - 1] = 0;
     }
 };
 
 bool isNew(string name, vector<Player> const &p, int indexes[3], int k) {
-    int i=0;
-    for(i=0; i<p.size(); i++) {
-        if(name == p[i].nome) {
+    int i = 0;
+    for (i = 0; i < p.size(); i++) {
+        if (name == p[i].nome) {
             indexes[k] = i;
             return false;
         }
@@ -47,35 +46,39 @@ bool isNew(string name, vector<Player> const &p, int indexes[3], int k) {
     return true;
 }
 
-G* create_graph(int n) {
+G *create_graph(int n) {
     G *g = NULL;
-    g = (G*)malloc(sizeof(G));
-    g->mark = (int*)calloc(n, sizeof(int));
+    g = (G *)malloc(sizeof(G));
+    g->mark = (int *)calloc(n, sizeof(int));
     g->numEdge = 0;
     g->numVertices = 0;
     g->maxdist = 0;
-    for(int i=0; i<300; ++i) for(int j=0; j<300; ++j) g->matrix[i][j] = 0;
+    for (int i = 0; i < 300; ++i)
+        for (int j = 0; j < 300; ++j)
+            g->matrix[i][j] = 0;
     return g;
 }
 
 int first(G *g, int v) {
-    for(int i = 0; i < g->numVertices; ++i) if(g->matrix[v][i] != 0) return i;
+    for (int i = 0; i < g->numVertices; ++i)
+        if (g->matrix[v][i] != 0) return i;
     return g->numVertices;
 }
 
 int next(G *g, int v, int w) {
-    for(int i = w+1; i < g->numVertices; ++i) if(g->matrix[v][i] != 0) return i;
+    for (int i = w + 1; i < g->numVertices; ++i)
+        if (g->matrix[v][i] != 0) return i;
     return g->numVertices;
 }
 
 bool isEdge(G *g, int i, int j) {
-    return g->matrix[i][j] != 0; //acho q isso funciona?
+    return g->matrix[i][j] != 0; // acho q isso funciona?
 }
 
 void setEdge(G *g, int i, int j) {
-    if(!isEdge(g, i, j)) g->numEdge++;
+    if (!isEdge(g, i, j)) g->numEdge++;
     g->matrix[i][j] = 1;
-    if(!isEdge(g, j, i)) g->numEdge++; // nao dirigido
+    if (!isEdge(g, j, i)) g->numEdge++; // nao dirigido
     g->matrix[j][i] = 1;
 }
 
@@ -91,21 +94,21 @@ bool isVisited(G *g, int v) {
 }
 
 void setDist(G *g, vector<Player> &p, int v, int dist) {
-    if(dist>g->maxdist) g->maxdist = dist;
-    if(dist<p[v].dist) p[v].dist = dist;
+    if (dist > g->maxdist) g->maxdist = dist;
+    if (dist < p[v].dist) p[v].dist = dist;
 }
 
 void BFS(G *g, int v, vector<Player> &p) {
-    int w, dist=0;
+    int w, dist = 0;
     queue<int> q;
     q.push(v);
     setDist(g, p, v, dist); // parent...?
     setMark(g, v, 1);
-    while (q.size() > 0){
-        //toda vez que ele dequeua, eh +1 no clock
+    while (q.size() > 0) {
+        // toda vez que ele dequeua, eh +1 no clock
         v = q.front();
         q.pop();
-        dist = p[v].dist+1;
+        dist = p[v].dist + 1;
         w = first(g, v);
         while (w < g->numVertices) {
             setDist(g, p, w, dist);
@@ -129,87 +132,68 @@ void setEdges(G *g, int i, int j, int k) {
     setEdge(g, k, i);
 }
 
-/*void swap(vector<Player> &p, int i, int j) {
-    Player temp;
-    temp = p[i];
-    p[i] = p[j];
-    p[j] = temp;
-}*/
-
 int HoarePartition(vector<Player> &p, int l, int r) {
     string s;
     s = p[l].nome;
     int i = l;
-    int j = r+1;
+    int j = r + 1;
     do {
         do {
             ++i;
-        } while(s > p[i].nome && r > i);
+        } while (s > p[i].nome && r > i);
         do {
             --j;
-        } while(s < p[j].nome);
+        } while (s < p[j].nome);
         swap(p[i], p[j]);
-    } while(i<j);
+    } while (i < j);
     swap(p[i], p[j]);
     swap(p[l], p[j]);
     return j;
 }
 
 void Quicksort(vector<Player> &p, int l, int r) {
-    if(l<r) {
+    if (l < r) {
         int s = HoarePartition(p, l, r);
-        Quicksort(p, l, s-1);
-        Quicksort(p, s+1, r);
+        Quicksort(p, l, s - 1);
+        Quicksort(p, s + 1, r);
     }
 }
 
 void printResult(vector<Player> const &p, G *g, int n) {
     int k, j;
-    cout << g->numVertices << endl;;
-    for(k = 0; k <= n; ++k) {
-        for(j = 0; j < g->numVertices; ++j) {
-            if(p[j].dist == k) cout << p[j].nome << " " << p[j].dist << endl;
+    cout << g->numVertices << endl;
+    for (k = 0; k <= n; ++k) {
+        for (j = 0; j < g->numVertices; ++j) {
+            if (p[j].dist == k) cout << p[j].nome << " " << p[j].dist << endl;
         }
     }
-    for(j = 0; j < g->numVertices; ++j) {
-        if(p[j].dist == __INT_MAX__) cout << p[j].nome << " undefined" << endl;
+    for (j = 0; j < g->numVertices; ++j) {
+        if (p[j].dist == __INT_MAX__) cout << p[j].nome << " undefined" << endl;
     }
 }
 
 int main() {
-    int n, q, k, cont=0, indexes[3];
+    int n, q, k, indexes[3];
     cin >> n;
     string name;
     vector<Player> p;
-    //p = new Player[1000];
-    G* g = NULL;
-    while(n--) {
+    G *g = NULL;
+    while (n--) {
         g = create_graph(1); // dava pra passar tipo q*3 sla
         cin >> q;
-        for(k = 0; k < q*3; ++k) {
-            //scannea os times, procura por um ahmad nele (enquanto procura se o jogador eh repetido) e se tiver, ja seta a aresta
+        for (k = 0; k < q * 3; ++k) {
             cin >> name;
-            if(isNew(name, p, indexes, k%3)) p.push_back(Player(g, name, indexes, k));
-            if(k%3==2) {
-                setEdges(g, indexes[0], indexes[1], indexes[2]); //3 jogadores
+            if (isNew(name, p, indexes, k % 3)) p.push_back(Player(g, name, indexes, k));
+            if (k % 3 == 2) {
+                setEdges(g, indexes[0], indexes[1], indexes[2]); // 3 jogadores
             }
         }
-        //se tudo der certo, nesse ponto, eu sei onde ta ahmad e ja setei a matriz de adjacencias
         BFS(g, g->ahmad, p);
-        Quicksort(p, 0, g->numVertices-1);
+        Quicksort(p, 0, g->numVertices - 1);
         printResult(p, g, g->maxdist);
         p.clear();
-        //clear_graph(g); // talvez n de certo isso
+        // clear_graph(g); // talvez n de certo isso
     }
     p.shrink_to_fit();
     return 0;
 }
-//criar funcao q aloca os vertices / funcao q checa se o vertice ja existe
-// cada while roda uma linha. deve ter algum jeito logico de checar se tem um ahmad e ja setar as arestas
-// o clock aumenta a cada vez que muda o vertice base?
-// mark eh um vetor de struct com o nome, a 'marca' de visita e o peso (possivelmente dentro da marca)
-// calcular o clock com base no peso do vertice anterior (talvez mais eficiente com a fila), que ja deve estar calculado (talvez criar mais um parametro; passar 0 na main)
-//sera q rola uma funcao prev?
-// ou mesmo passar o clock como clock+1 nas funcoes e tirar o global/ponteiro
-//ordena por nome e printa por numero
-//int max pra quem nao for alcancavel?
