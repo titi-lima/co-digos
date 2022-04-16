@@ -1,24 +1,20 @@
 #include <iostream>
 #include <limits.h>
 #include <queue>
-#include <stdbool.h>
-#include <stdlib.h>
 #include <string>
 #include <vector>
 
 using namespace std;
-
 
 class G {
 public:
     bool matrix[300][300];
     int numEdge;
     int numVertices;
-    int *mark;
+    vector<bool> mark;
     int ahmad;
     int maxdist;
     G(int n) {
-        mark = (int *)calloc(n, sizeof(int));
         numEdge = 0;
         numVertices = 0;
         maxdist = 0;
@@ -60,7 +56,6 @@ public:
         return getMark(v) != 0;
     }
 
-
     void setEdges(int i, int j, int k) {
         setEdge(i, j);
         setEdge(j, k);
@@ -80,8 +75,7 @@ public:
         nome.assign(name);
         // cout << p[g->numVertices-1].nome << endl;
         dist = __INT_MAX__;
-        g->mark = (int *)realloc(g->mark, g->numVertices * sizeof(int)); // mds pq tem tanta alocacao
-        g->mark[g->numVertices - 1] = 0;
+        g->mark.push_back(0);
     }
 };
 
@@ -126,7 +120,8 @@ bool isNew(string name, vector<Player> const &p, int indexes[3], int k) {
 }
 
 void clear_graph(G *g) {
-    free(g->mark);
+    g->mark.clear();
+    g->mark.shrink_to_fit();
     delete g;
 }
 
