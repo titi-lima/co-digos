@@ -12,3 +12,5 @@ tempCodeRunnerFile.csharp
 .vscode/targets.log
 .vscode/launch.json
 .vscode/c_cpp_properties.json
+.vscode/tasks.json
+.vscode/settings.json
