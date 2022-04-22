@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <queue>
 #include <tuple>
@@ -11,18 +12,26 @@ public:
     unordered_map<int, int> parent;
 
     DS(int n) {
-        for (int i = 0; i < n; i++) parent[i] = i; // cada subconjunto de vertices tem o proprio vertice como raiz no inicio
+        for(int i = 0; i < n; i++) parent[i] = i; // cada subconjunto de vertices tem o proprio vertice como raiz no inicio
     }
 
     int findRoot(int curr) {
-        if (parent[curr] == curr) return curr;
+        if(parent[curr] == curr) return curr;
         return findRoot(parent[curr]); // ate encontrar a raiz
+    }
+
+    int findRootCout(int curr) {
+        cout << curr << '\n';
+        if(parent[curr] == curr) {
+            return curr;
+        }
+        return findRootCout(parent[curr]); // ate encontrar a raiz
     }
 
     void uniao(int a, int b) {
         int r1 = findRoot(a);
         int r2 = findRoot(b);
-        parent[r1] = r2;
+        if(r1!=r2) parent[r2] = r1;
     }
 };
 
@@ -65,6 +74,11 @@ public:
         matrix[j][i] = w;
     }
 
+    void delEdge(int i, int j) {
+        matrix[i][j] = 0;
+        matrix[j][i] = 0;
+    }
+
     void setMark(int v, bool val) {
         mark[v] = val;
     }
@@ -88,18 +102,57 @@ public:
             return get<2>(t1) > get<2>(t2);
         }
     };
-
-    void printResult() {
-        int sum = 0;
-        for (int i = 0; i < numVertices; i++) {
-            sum += weight(i, first(i));
+    struct CompareWeightMax {
+        bool operator()(tuple<int, int, int> const &t1, tuple<int, int, int> const &t2) {
+            return get<2>(t1) < get<2>(t2);
         }
-        cout << sum << '\n';
+    };
+
+    void printResult(G &g) {
+        for (int i = 0; i < numVertices; i++) {
+            for(int j = 0; j < numVertices; j++) {
+                cout << (matrix[i][j] != g.matrix[i][j] && matrix[i][j] != g.matrix[j][i]) << ' ';
+            }
+            cout << '\n';
+        }
     }
 
     void setOneEdge(int i, int j, int w) {
         if (!isEdge(i, j)) numEdge++;
-        matrix[i][j] = w;
+        if(!isEdge(j, i)) matrix[i][j] = w;
+    }
+
+    void preVisit(queue<int> &p, int v) {
+        p.push(v);
+    }
+
+    void posVisit(queue<int> &p, int v) {
+        p.pop();
+    }
+
+    void findGreatestWeight(queue<int> &q, int p) {
+        //talvez ele tente checar o mesmo ciclo tbm
+        while(!q.empty()) {
+            cout << 'a' << q.front() << ' ';
+            q.pop();
+        }
+        cout << '\n';
+    }
+
+    void DFS(int v, int t, int parent, queue<int> p) {
+        int w;  
+        preVisit(p, v);
+        setMark(v, 1);
+        w = first(v);
+        //cout << "entra aqui qnts vezes, " << v << '\n';
+        while(w < numVertices) {
+            //cout << v << ' ' << w << '\n';
+            if(!isVisited(w)) DFS(w, t, v, p);
+            else if(w!=parent && p.size() > 1) return findGreatestWeight(p, t);// achamo, backtracar o vector ate achar o w lembrar o parent
+
+            w = next(v, w);
+        }
+        posVisit(p, v); //queue
     }
 
     void Kruskal(G &g) {
@@ -109,23 +162,41 @@ public:
         for (int i = 0; i < numVertices; ++i) {
             w = first(i);
             while (w < numVertices) {
-                t = make_tuple(i, w, weight(i, w));
-                H.push(t);
-                w = next(i, w);
+                if(w>=i) {
+                    t = make_tuple(i, w, weight(i, w));
+                    H.push(t);
+                    w = next(i, w);
+                }
+                else w = next(i, w);
             }
         }
         DS ds(numVertices);
         int numMST = numVertices;
-        while (numMST > 1) {
+        priority_queue<tuple<int, int, int>, vector<tuple<int, int, int>>, CompareWeightMax> Hg;
+        while (numMST > 1 || !H.empty()) {
             tie(v, u, wt) = H.top();
             H.pop();
             if (ds.findRoot(v) != ds.findRoot(u)) {
                 ds.uniao(v, u);
-                g.setOneEdge(v, u, wt);
+                g.setEdge(v, u, wt);
                 numMST--;
             }
+            else {
+                t = make_tuple(v, u, wt);
+                Hg.push(t);
+            }
         }
-        g.printResult();
+        while(!Hg.empty()) {
+            tie(v, u, wt) = Hg.top();
+            g.setEdge(v, u, wt);
+            cout << v << " ta passando\n";
+            queue<int> q;
+            for(int i = 0; i < numVertices; i++) g.setMark(i, 0);
+            g.DFS(v, v, v, q);
+            g.delEdge(v, u); // UMA ARESTA PODE TER MAIS DE UM CICLO
+            Hg.pop();
+        }
+        //printResult(g);
     }
 };
 
