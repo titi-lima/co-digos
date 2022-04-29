@@ -4,10 +4,12 @@ body, html {
 }
 
 .topnav {
+    margin-right: -8px;
+    margin-left: -8px;
     overflow: hidden;
     background-color: #333;
-    position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
+    width:100%;
     top: 0;
 }
 
@@ -34,7 +36,6 @@ body, html {
 .topnav a.social_media {
     float: right;
     padding: 10px 15px;
-    
 }
 
 .hero-image {
@@ -42,7 +43,7 @@ body, html {
     url("arruda.JPG");
     height: 100%;
     background-position: center;
-    margin-top: -8px;
+    margin-top: -21px;
     margin-right: -8px;
     margin-left: -8px;
     background-repeat: no-repeat;
@@ -60,10 +61,17 @@ body, html {
 .ufpe {
     background-image: url('Brasao_da_UFPE.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: top;
     display: block;
 }
 
 .ufpe p {
     font-family: 'Poppins', sans-serif;
+}
+
+.ufpe h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
 }
