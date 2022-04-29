@@ -1,0 +1,69 @@
+body, html {
+    height: 100%;
+    font-family: verdana;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.topnav * {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 15px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav img {
+    float: left;
+    padding: 0px 0px;
+}
+
+.topnav a:hover {
+    background-color: rgba(255, 253, 253, 0.22);
+    color: black;
+}
+
+.topnav a.social_media {
+    float: right;
+    padding: 10px 15px;
+    
+}
+
+.hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("arruda.JPG");
+    height: 100%;
+    background-position: center;
+    margin-top: -8px;
+    margin-right: -8px;
+    margin-left: -8px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.hero-text {
+    text-align: center;
+    top:40%;
+    position: relative;
+    color: white;
+}
+
+.ufpe {
+    background-image: url('Brasao_da_UFPE.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+}
+
+.ufpe p {
+    font-family: 'Poppins', sans-serif;
+}
