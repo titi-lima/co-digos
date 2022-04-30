@@ -14,7 +14,7 @@ int main() {
     scanf("%d", &result);
     printf("\n");
     if (n1 % n2 == 0) {
-        printf("faz na mao man, isso n vai rodar aqui n kkkkkkkkkkkkkkkkkkk\n");
+        printf("Ops! Essa entrada nao vai funcionar.\n");
         fl = 1;
     }
     while (resto != 0 && fl == 0) {
