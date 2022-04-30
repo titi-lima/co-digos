@@ -64,11 +64,11 @@ body, html {
     background-repeat: no-repeat;
     background-position: top;
     display: block;
+    font-family: 'Poppins', sans-serif;
 }
 
 .ufpe p {
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
+    text-align: left;
 }
 
 .ufpe h1 {
@@ -84,17 +84,15 @@ body, html {
     text-align: center;
 }
 
-#img {
-    background-image: url('euclides.png');
-    background-repeat: no-repeat;
-    background-position: right;
-    margin-top: 20px;
-    text-align:left;
-    padding-right: 150px;
-}
-
 #alg img {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#alg figcaption {
+    padding-left: 30%;
+    padding-right: 28%;
+    font-size: 80%;
+    font-style: italic;
 }
