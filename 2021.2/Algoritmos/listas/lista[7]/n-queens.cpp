@@ -40,11 +40,10 @@ public:
             }
             if (l - j >= 0 && k + i < size) {
                 if (M[l - j][k + i]) return false; // diagonal inferior direita \ (-+)
-            } else if (l + j > size && l - j < 0 && k + i > size && i - k < 0)
+            } else if (l + j >= size && l - j <= 0 && k + i >= size && i - k <= 0)
                 return true;
         }
     }
-    
     void printMatrix() {
         if (printed)
             cout << '\n';
@@ -90,11 +89,10 @@ public:
 int main() {
     int d;
     cin >> d;
+    if (d > 8) return 0;
     Tab t(d);
-    if(t.size == 1) cout << "Q\n";
-    else if (t.size <= 3)
-        cout << "Not Possible\n";
-    else
-        t.qns(0);
+    if (t.size == 1) cout << "Q\n";
+    else if (t.size <= 3) cout << "Not Possible\n";
+    else t.qns(0);
     return 0;
 }
