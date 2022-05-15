@@ -3,7 +3,7 @@
     font-style: normal;
 }
 
-#header {
+header {
     padding: 40px 114px;
     max-width:100%;
     display:flex;
