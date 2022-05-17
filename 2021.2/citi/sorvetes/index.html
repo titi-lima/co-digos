@@ -4,18 +4,35 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Loja de sorvetes</title>
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 426px)"
+      href="style.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 425px)"
+      href="stylemobile.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <title>Loja de picolés</title>
   </head>
   <body>
-    <header>
+    <div id="navbar">
       <img src="rsc/Marca.png" alt="Douple Dip - Ice Cream Shop" id="marca" />
       <input type="search" placeholder="Procure seu sorvete" />
-    </header>
+    </div>
     <div class="flexbox">
       <div class="trio">
         <div class="picole_grande">
           <img src="rsc/Tablito.png" alt="Picolé Tablito" />
+          <br />
+          <br />
           <text>Picolé Tablito</text>
           <p>Picolé de chocolate tradicional e branco 106g (R$ 0,05/g)</p>
           <div class="price">
@@ -32,8 +49,10 @@
         </div>
       </div>
       <div class="trio">
-        <div class="picole_grande">
+        <div class="picole_grande" id="chicabon">
           <img src="rsc/Chicabon.png" alt="Picolé Chica Bon" />
+          <br />
+          <br />
           <text>Chica Bon</text>
           <p>Picolé de chocolate tradicional 53g (R$ 0,05/g)</p>
           <div class="price">
@@ -50,6 +69,30 @@
         </div>
       </div>
     </div>
-    <div id="rodape"></div>
+    <div id="rodape">
+      <div class="redes">
+        <div>
+          <div id="linkedin">
+            <a href="https://br.linkedin.com" target="blank"
+              ><img id="in" src="rsc/iclinkedin.PNG" alt="Linkedin"
+            /></a>
+          </div>
+        </div>
+        <div>
+          <a href="https://www.facebook.com" target="blank"
+            ><img id="facebook" src="rsc/icface.svg" alt="Facebook" />
+          </a>
+        </div>
+        <div>
+          <a href="https://www.twitter.com" target="blank"
+            ><img src="rsc/ictwitter.svg" alt="Twitter" id="twitter" />
+          </a>
+        </div>
+      </div>
+      <img src="rsc/Marca.png" alt="Marca" id="marca2" />
+      <div id="text">
+        <text>Made with <</text><text>/> and <3 by Tiago </text>
+      </div>
+    </div>
   </body>
 </html>
