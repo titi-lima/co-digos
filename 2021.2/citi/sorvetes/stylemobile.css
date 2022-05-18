@@ -1,190 +1,189 @@
 * {
-    font-family: 'Montserrat';
-    font-style: normal;
+  font-family: "Montserrat";
+  font-style: normal;
 }
 
 body {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
 }
 
 #navbar {
-    height: 129.42px;
-    padding: 5px 32px 5px 20px;
-    max-width:100%;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    left: 0%;
-    right: 0%;
-    top: 0px;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
-    border-radius: 0px;
+  height: 129.42px;
+  padding: 5px 32px 5px 20px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  left: 0%;
+  right: 0%;
+  top: 0px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 0px;
 }
 
 #navbar img {
-    width: 70px;
-    height: 69.42px;
+  width: 70px;
+  height: 69.42px;
 }
 
-
 input {
-    background-color: white;
-    font-weight: 400;
-    font-size: 20px;
-    background-image: url(rsc/Lupa.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 13px;
-    gap: 16px;
-    padding-left: 32px;
-    border-radius: 7px;
-    width: 40px;
-    height: 40px;
-    border: 0.334358px solid rgba(96, 96, 96, 0.3);
-    border-radius: 8px;
+  background-color: white;
+  font-weight: 400;
+  font-size: 20px;
+  background-image: url(rsc/Lupa.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 13px;
+  gap: 16px;
+  padding-left: 32px;
+  border-radius: 7px;
+  width: 40px;
+  height: 40px;
+  border: 0.334358px solid rgba(96, 96, 96, 0.3);
+  border-radius: 8px;
 }
 
 .flexbox {
-    display:grid;
-    gap:18px;
-    padding-top:90px;
-    margin-top:80px;
-    padding-bottom:38px;
+  display: grid;
+  gap: 18px;
+  padding-top: 90px;
+  margin-top: 80px;
+  padding-bottom: 38px;
 }
 
 .trio {
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:18px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
 .duo {
-    display:flex;
-    flex-direction: column;
-    gap:17.69px;
+  display: flex;
+  flex-direction: column;
+  gap: 17.69px;
 }
 
 .picole_grande {
-    background-color: white;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
-    padding: 24px;
+  background-color: white;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 24px;
 }
 
 #chicabon {
-    order:1;
+  order: 1;
 }
 
 .picole_grande text {
-    width: 149.19px;
-    height: 22px;
-    display:block;
-    font-weight: 500;
-    font-size: 17.6814px;
-    line-height: 22px;
-    color: #292929;
+  width: 149.19px;
+  height: 22px;
+  display: block;
+  font-weight: 500;
+  font-size: 17.6814px;
+  line-height: 22px;
+  color: #292929;
 }
 
 .picole_grande p {
-    width: 149.19px;
-    height: 22px;
-    font-weight: 500;
-    font-size: 8.84068px;
-    line-height: 11px;
-    color: #606060;    
+  width: 149.19px;
+  height: 22px;
+  font-weight: 500;
+  font-size: 8.84068px;
+  line-height: 11px;
+  color: #606060;
 }
 
 .picole_grande img {
-    width:149.19px;
+  width: 149.19px;
 }
 
 .price {
-    background: rgba(249, 199, 191, 0.5);
-    border-radius:  4.42034px;
-    padding: 4.42034px;
-    gap: 5.53px;
-    width: 56.84px;
-    height: 24.84px;
+  background: rgba(249, 199, 191, 0.5);
+  border-radius: 4.42034px;
+  padding: 4.42034px;
+  gap: 5.53px;
+  width: 56.84px;
+  height: 24.84px;
 }
 
 .price text {
-    text-align:center;
-    width: 48px;
-    height: 16px;
-    font-weight: 400;
-    font-size: 13px;
-    line-height:23px;
-    padding-left: 5px;
+  text-align: center;
+  width: 48px;
+  height: 16px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 23px;
+  padding-left: 5px;
 }
 
 .picole_pequeno {
-    background-color: white;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
-    width:132px;
-    height:132px;
-    padding-left:20px;
-    padding-top:20px;
+  background-color: white;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  width: 132px;
+  height: 132px;
+  padding-left: 20px;
+  padding-top: 20px;
 }
 
 .picole_pequeno img {
-    width:106.09px;
+  width: 106.09px;
 }
 
 #rodape {
-    max-width:100%;
-    background-color: #F2F2F2;
-    display:flex;
-    flex-direction: column;
-    justify-content:space-between;
-    align-items: center;
-    padding:60px 114px;
-    gap:24px;
-    margin-left:-8px;
-    margin-right:-10px;
-    margin-bottom:-10px;
+  max-width: 100%;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 114px;
+  gap: 24px;
+  margin-left: -8px;
+  margin-right: -10px;
+  margin-bottom: -10px;
 }
 
 #marca2 {
-    width: 0px;
-    visibility:hidden;
+  width: 0px;
+  visibility: hidden;
 }
 
 .redes {
-    display:flex;
-    gap:30px;
+  display: flex;
+  gap: 30px;
 }
 
 #in {
-    filter:contrast(0.7);
-    padding:13px;
-    width:30px;
-    height:30px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
+  filter: contrast(0.7);
+  padding: 13px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
 }
 
 #twitter {
-    padding:19px;
-    width:21px;
-    height:19px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
+  padding: 19px;
+  width: 21px;
+  height: 19px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
 }
 
 #facebook {
-    padding: 18px 21px;
-    width:16px;
-    height:20px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
+  padding: 18px 21px;
+  width: 16px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
 }
 
 #text {
-    font-weight: 400;
-    font-size: 12px;
-    width:217px;
-    text-indent: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  width: 217px;
+  text-indent: 15px;
 }

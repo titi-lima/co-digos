@@ -24,5 +24,4 @@ function myFunction() {
       rectangle.style.backgroundColor = "#F2F2F2";
       break;
   }
-  console.log("sexo");
 }
