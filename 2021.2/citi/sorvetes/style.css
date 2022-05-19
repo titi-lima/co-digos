@@ -1,157 +1,158 @@
 * {
-    font-family: 'Montserrat';
-    font-style: normal;
+  font-family: "Montserrat";
+  font-style: normal;
 }
 
 body {
-    background-color: #f9f9f9;
+  background-color: #f9f9f9;
+  display: inline-block;
 }
 
 #navbar {
-    padding: 40px 114px;
-    max-width:100%;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    left: 0%;
-    right: 0%;
-    top: 0px;
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
-    border-radius: 0px;
+  margin-left: -8px;
+  margin-top: -8px;
+  padding: 40px 114px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  left: 0%;
+  right: 0%;
+  top: 0px;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 0px;
 }
 
 input {
-    background-color: white;
-    font-weight: 400;
-    font-size: 20px;
-    background-image: url(rsc/Lupa.png);
-    background-repeat: no-repeat;
-    background-position: 10px center;
-    padding: 8px 16px;
-    gap: 16px;
-    padding-left: 32px;
-    border-radius: 7px;
-    text-indent: 10px;
-    width: 450px;
-    height: 61px;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
-    border-radius: 8px;
+  background-color: white;
+  font-weight: 400;
+  font-size: 20px;
+  background-image: url(rsc/Lupa.png);
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  padding: 8px 16px;
+  gap: 16px;
+  padding-left: 32px;
+  border-radius: 7px;
+  text-indent: 10px;
+  width: 450px;
+  height: 61px;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
+  border-radius: 8px;
 }
 
 .flexbox {
-    display:flex;
-    padding:265px 89px 110px 89px;
+  display: flex;
+  padding: 80px 89px 110px 89px;
 }
 
 .trio {
-    margin: 0px 5px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:32px;
+  margin: 0px 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
 }
 
 .duo {
-    display:flex;
-    flex-direction: column;
-    gap:32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .picole_grande {
-    background-color: white;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
-    padding: 24px;
+  background-color: white;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 24px;
 }
 
 .picole_grande text {
-    width: 270px;
-    height: 39px;
+  width: 270px;
+  height: 39px;
 
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 39px;
-    color: #292929;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 39px;
+  color: #292929;
 }
 
 .picole_grande p {
-    width: 270px;
-    height: 40px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 20px;
-    color: #606060;
+  width: 270px;
+  height: 40px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #606060;
 }
 
 .price {
-    margin-top: 20px;
-    background: rgba(249, 199, 191, 0.5);
-    padding:0px;
-    border-radius: 8px;
-    width: 103px;
-    height: 45px;
-    text-align:center;
+  margin-top: 20px;
+  background: rgba(249, 199, 191, 0.5);
+  padding: 0px;
+  border-radius: 8px;
+  width: 103px;
+  height: 45px;
+  text-align: center;
 }
 
 .price text {
-    width: 87px;
-    height: 29px;
-    font-family: 'Montserrat';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 45px;
+  width: 87px;
+  height: 29px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 45px;
 }
 
 .picole_pequeno {
-    background-color: white;
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
-    border-radius: 16px;
-    padding: 20px;
+  background-color: white;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  padding: 20px;
 }
 
 #rodape {
-    max-width:100%;
-    background-color: #F2F2F2;
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-    padding:60px 114px;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 114px;
 }
 
 #marca2 {
-    width: 80px;
+  width: 80px;
 }
 
 .redes {
-    display:flex;
-    gap:15px;
+  display: flex;
+  gap: 15px;
 }
 
 #in {
-    filter:contrast(0.7);
-    padding:13px;
-    width:30px;
-    height:30px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
+  filter: contrast(0.7);
+  padding: 13px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
 }
 
 #twitter {
-    padding:19px;
-    width:21px;
-    height:19px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
+  padding: 19px;
+  width: 21px;
+  height: 19px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
 }
 
 #facebook {
-    padding: 18px 21px;
-    width:16px;
-    height:20px;
-    border-radius: 50%;
-    border: 0.5px solid rgba(96, 96, 96, 0.3);
+  padding: 18px 21px;
+  width: 16px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(96, 96, 96, 0.3);
 }
