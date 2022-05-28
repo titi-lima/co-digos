@@ -1,5 +1,5 @@
 * {
-  font-family: "Arial";
+  font-family: "NoirPro-Regular";
   width: device-width;
 }
 
@@ -16,7 +16,7 @@
 
 #nameAux {
   position: relative;
-  top: -56px;
+  top: -62px;
   margin: 0px;
 }
 
@@ -47,6 +47,7 @@ h1 {
   padding-left: 129px;
   font-size: 44px;
   font-weight: 500;
+  color: #0b0b0b;
   white-space: nowrap;
 }
 
