@@ -20,10 +20,6 @@
   margin: 0px;
 }
 
-p {
-  margin-top: -46px;
-}
-
 .tattooist {
   opacity: 1;
   grid-column: 2/2;
@@ -58,6 +54,7 @@ h2 {
 }
 
 p {
+  margin-top: -46px;
   font-family: "Barlow", sans-serif;
   font-style: normal;
   font-weight: 300;

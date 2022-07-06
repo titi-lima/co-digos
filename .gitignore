@@ -1,3 +1,11 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
 tempCodeRunnerFile
 tempCodeRunnerFile.c
 2021.2/Algoritmos/listas/.DS_Store
@@ -45,3 +53,4 @@ tempCodeRunnerFile.csharp
 2021.2/citi/aux/tracos/assets/pedro.png
 2021.2/citi/aux/tracos/assets/Union.png
 2021.2/citi/aux/tracos/assets/samuel.png
+2022.1/infrasoft/start/1p-oi.asm
