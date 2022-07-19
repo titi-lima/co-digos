@@ -6,6 +6,7 @@
 
 # Unignore all dirs
 !*/
+*.bin
 tempCodeRunnerFile
 tempCodeRunnerFile.c
 2021.2/Algoritmos/listas/.DS_Store
@@ -42,7 +43,6 @@ tempCodeRunnerFile.csharp
 2021.2/citi/portfolio/Brasao_da_UFPE.png
 2021.2/citi/portfolio/enum_output.png
 2021.2/citi/portfolio/github.png
-.gitignore
 2021.2/citi/portfolio/euclides_output.png
 2021.2/citi/portfolio/discord.png
 2021.2/citi/portfolio/IMG_3931.JPG
@@ -53,4 +53,9 @@ tempCodeRunnerFile.csharp
 2021.2/citi/aux/tracos/assets/pedro.png
 2021.2/citi/aux/tracos/assets/Union.png
 2021.2/citi/aux/tracos/assets/samuel.png
-2022.1/infrasoft/start/1p-oi.asm
+2022.1/infrasoft/start
+2022.1/infrasoft/lista/q1.asm
+2021.1/início/horas_em_minutos.asm
+2022.1/infrasoft/lista/q2.asm
+2022.1/infrasoft/lista/q4.asm
+2022.1/infrasoft/lista/q5.asm
