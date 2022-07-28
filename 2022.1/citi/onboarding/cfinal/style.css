@@ -55,15 +55,21 @@ text {
   text-align: end;
 }
 
+#second {
+  text-align: start;
+}
+
 .inputs {
   background-color: #1a1a1a;
-  border: unset;
-  width: 10vw;
+  display: inline-block;
+  border: solid 1px #1a1a1a;
+  min-width: 5vw;
   color: #fff;
   visibility: visible !important;
   font-size: 2vw;
   margin-left: 0.5vw;
   margin-right: 0.5vw;
+  border-radius: 5%;
 }
 
 .riddle {

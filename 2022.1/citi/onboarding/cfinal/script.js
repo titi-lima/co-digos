@@ -22,8 +22,8 @@ b1.addEventListener("click", () => {
 });
 
 b2.addEventListener("click", () => {
-  if (tiago.value === "tiago" && matheus.value === "matheus") {
-    mark.style.left = "-2vw";
+  if (tiago.innerText === "tiago" && matheus.innerText === "matheus") {
+    // mark.style.left = "-2vw";
     t.innerText = "e";
     t.classList.remove("hide");
     y.innerText = "agradecem a sua presença!";
