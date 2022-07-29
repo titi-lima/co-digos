@@ -100,7 +100,7 @@ p {
   background-color: rgb(118, 33, 116);
   border-color: #2d9148;
   border-style: solid;
-  border-width: 2px;
+  border-width: 4px;
   width: 10vw;
 }
 
@@ -126,7 +126,7 @@ p {
     right: 11%;
   }
   .square {
-    border-width: 1px;
+    border-width: 2px;
   }
   #desc p {
     font-size: 11px;
