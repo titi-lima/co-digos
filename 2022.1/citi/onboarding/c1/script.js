@@ -4,12 +4,37 @@ const alignLeft = document.getElementById("input2");
 const secondContainer = document.getElementById("secondContainer");
 const alignCenter = document.getElementById("input3");
 const thirdContainer = document.getElementById("thirdContainer");
+const button = document.getElementById("socrates");
 let firstTrue = 0,
   secondTrue = 0,
-  thirdTrue = 0;
+  thirdTrue = 0,
+  clickedOnce = 0;
+
+const p1 = document.getElementById("zico");
+const p2 = document.getElementById("junior");
+const p3 = document.getElementById("falcao");
+const answer = document.getElementById("toninho");
 
 function handleSolved() {
-  console.log("ebaa");
+  button.style.display = "inline-block";
+  button.addEventListener("click", () => {
+    if (!clickedOnce) {
+      clickedOnce = 1;
+      zico.style.color = "#fff";
+      junior.style.color = "#fff";
+      falcao.style.color = "#fff";
+      setTimeout(() => {
+        zico.style.color = "#1a1a1a";
+        zico.style.fontSize = "5vh";
+        junior.style.color = "#1a1a1a";
+        junior.style.fontSize = "5vh";
+        falcao.style.color = "#1a1a1a";
+        falcao.style.fontSize = "5vh";
+        answer.style.display = "inline-block";
+      }, 500);
+    } else {
+    }
+  });
 }
 
 alignRight.addEventListener("input", (e) => {

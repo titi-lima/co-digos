@@ -60,9 +60,9 @@ text {
 }
 
 .inputs {
-  background-color: #1a1a1a;
+  background-color: #0e2a1b;
   display: inline-block;
-  border: solid 1px #1a1a1a;
+  border: solid 1px #0e2a1b;
   min-width: 5vw;
   color: #fff;
   visibility: visible !important;

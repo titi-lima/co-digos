@@ -13,8 +13,8 @@ const matheus = document.getElementById("second");
 b2 = document.getElementById("b2");
 
 b1.addEventListener("click", () => {
-  if (bg.value === "1a1a1a") {
-    body.style.backgroundColor = "#1a1a1a";
+  if (bg.value === "0e2a1b") {
+    body.style.backgroundColor = "#0e2a1b";
     nicetry.style.visibility = "visible";
     bg.parentNode.removeChild(bg);
     body.removeChild(b1);
