@@ -4,7 +4,7 @@ const firstContainer = document.getElementById("firstContainer");
 const zero = document.getElementById("vini");
 const one = document.getElementById("raphinha");
 const two = document.getElementById("neymar");
-
+const inputs = document.getElementById("inputs");
 const alignLeft = document.getElementById("input2");
 const secondContainer = document.getElementById("secondContainer");
 const alignCenter = document.getElementById("input3");
@@ -20,9 +20,21 @@ const p2 = document.getElementById("junior");
 const p3 = document.getElementById("falcao");
 const answer = document.getElementById("toninho");
 
+answer.addEventListener("input", () => {
+  if (
+    !(
+      "0" <= answer.value[answer.value.length - 1] &&
+      answer.value[answer.value.length - 1] <= "9"
+    )
+  ) {
+    answer.value = answer.value.slice(0, -1);
+  }
+});
+
 function handleSolved() {
   desc.parentNode.removeChild(desc);
   button.style.display = "inline-block";
+  inputs.parentNode.removeChild(inputs);
   button.addEventListener("click", () => {
     if (!clickedOnce) {
       clickedOnce = 1;
@@ -33,19 +45,20 @@ function handleSolved() {
       one.style.borderTop = "unset";
       one.style.borderLeft = "unset";
       two.style.borderTop = "unset";
+      window.location.href = "#youtube";
 
       setTimeout(() => {
         zico.style.color = "#1a1a1a";
-        zico.style.fontSize = "5vh";
+        zico.style.fontSize = "10vh";
         junior.style.color = "#1a1a1a";
-        junior.style.fontSize = "5vh";
+        junior.style.fontSize = "10vh";
         falcao.style.color = "#1a1a1a";
-        falcao.style.fontSize = "5vh";
+        falcao.style.fontSize = "10vh";
         answer.style.display = "inline-block";
       }, 1000);
     } else {
-      if (toninho.value === "021") {
-        window.location.href = "//onboarding.titi-lima.repl.co/cf";
+      if (answer.value === "021") {
+        window.location.href = "../vampeta";
       }
     }
   });
@@ -65,7 +78,8 @@ alignLeft.addEventListener("input", (e) => {
   secondTrue =
     secondContainer.style.justifyContent === "left" ||
     secondContainer.style.justifyContent === "flex-start" ||
-    secondContainer.style.justifyContent === "start";
+    secondContainer.style.justifyContent === "start" ||
+    secondContainer.style.justifyContent === "space-between";
   console.log(firstTrue, secondTrue, thirdTrue);
   if (firstTrue && secondTrue && thirdTrue) handleSolved();
 });
