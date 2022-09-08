@@ -14,7 +14,6 @@ tempCodeRunnerFile.c
 2021.2/.DS_Store
 .DS_Store
 tempCodeRunnerFile.cpp
-.gitignore
 tempCodeRunnerFile.csharp
 .vscode/configurationCache.log
 .vscode/dryrun.log
@@ -32,10 +31,8 @@ tempCodeRunnerFile.csharp
 2021.2/dev_web/inicio/portfolio/euclides.png
 2021.2/dev_web/inicio/portfolio/enum_output.png
 2021.1/o_homem-aranha_que_se_perdeu_na_historia/.vscode/c_cpp_properties.json
-.gitignore
 2021.1/o_homem-aranha_que_se_perdeu_na_historia/.vscode/dryrun.log
 2021.1/o_homem-aranha_que_se_perdeu_na_historia/.vscode/settings.json
-.gitignore
 2021.2/dev_web/inicio/portfolio/aranha.jpeg
 2021.2/dev_web/inicio/portfolio/pc.JPG
 2021.2/Algoritmos/listas/lista[7]/n-queens.cpp
@@ -59,3 +56,5 @@ tempCodeRunnerFile.csharp
 2022.1/infrasoft/lista/q2.asm
 2022.1/infrasoft/lista/q4.asm
 2022.1/infrasoft/lista/q5.asm
+*.vscode*
+*.png
