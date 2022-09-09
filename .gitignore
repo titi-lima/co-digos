@@ -58,3 +58,5 @@ tempCodeRunnerFile.csharp
 2022.1/infrasoft/lista/q5.asm
 *.vscode*
 *.png
+*.out
+2022.1/infrasoft/thread/boruvka.cpp
