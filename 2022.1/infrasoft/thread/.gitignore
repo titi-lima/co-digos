@@ -2,3 +2,5 @@
 !*.*
 !*/
 *.out
+boruvka_original.cpp
+*.vscode*
