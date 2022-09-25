@@ -220,3 +220,4 @@ int main() {
     }
     return 0;
 }
+// g++ q4.cpp -pthread -o q4 && ./q4

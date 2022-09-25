@@ -61,6 +61,16 @@ void *sparseMatrixDenseVectorHelper(void *arg) {
     return result; // esse result eh a i-esima coluna
 }
 
+void printVector(float **result) {
+    for (int i = 0; i < 4; i++) {
+        int print = 0;
+        for (int j = 0; j < 4; j++) {
+            print += result[j][i];
+        }
+        cout << print << '\n';
+    }
+}
+
 void sparseMatrixDenseVector() {
     pthread_t it[4];
     float **result = new float *[4];
@@ -68,7 +78,7 @@ void sparseMatrixDenseVector() {
         pthread_create(&it[i], NULL, sparseMatrixDenseVectorHelper, (void *)&aux[i]); // o i vai mudando
     }
     for (int i = 0; i < 4; i++) pthread_join(it[i], (void **)&result[i]);
-    printMatrixByColumn((float **)result);
+    printVector((float **)result);
 
     for (int i = 0; i < 4; i++) delete[] result[i];
     delete[] result;
@@ -134,3 +144,4 @@ int main() {
 
     return 0;
 }
+// g++ q6.cpp -pthread -o q6 && ./q6

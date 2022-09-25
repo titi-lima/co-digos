@@ -12,12 +12,10 @@ void *checkColumns(void *ptr) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N - 1; j++) {
             for (int k = j + 1; k < N; k++) {
-                cout << i << ' ' << j << ' ' << k << '\n';
                 if (matrix[i][j] == matrix[i][k]) {
                     isSquareLatin = false;
                     pthread_exit(NULL);
                 }
-                cout << "morreu\n";
             }
         }
     }
@@ -68,3 +66,4 @@ int main() {
 
     return 0;
 }
+// g++ q7.cpp -pthread -o q7 && ./q7
