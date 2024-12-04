@@ -48,3 +48,5 @@ tempCodeRunnerFile.csharp
 *.out
 2022.1/infrasoft/thread/boruvka.cpp
 2022.1/infrasoft/thread/boruvka_original.cpp
+*.hi
+*.o
