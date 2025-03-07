@@ -50,3 +50,4 @@ tempCodeRunnerFile.csharp
 2022.1/infrasoft/thread/boruvka_original.cpp
 *.hi
 *.o
+*.class

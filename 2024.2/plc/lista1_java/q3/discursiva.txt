@@ -1,0 +1,7 @@
+Classes abstratas possuem estado ou funcionalidade compartilhada entre classes.
+Interfaces, por outro lado, não possuem estado e são usadas apenas para definir um "contrato" que classes devem seguir.
+
+No nosso caso, SmartDevice poderia ser uma classe abstrata, dado que todos os dispositivos possuem um estado (ligado ou desligado) e uma funcionalidade (ligar ou desligar) de implementação idêntica.
+
+No entanto, é importante ressaltar que o exemplo dado para as funções turnOn e turnOff é bem educacional, e normalmente em um caso de uso real seria mais complexo e variaria entre dispositivos, o que tornaria o código confuso de entender em escala.
+Além disso, em termos de testabilidade, a utilização de uma interface facilita a criação de testes unitários para cada dispositivo.

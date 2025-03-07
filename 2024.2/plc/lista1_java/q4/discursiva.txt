@@ -1,0 +1,6 @@
+Optei por utilizar uma interface Colorido que é implementada diretamente pelas classes de monstros.
+
+Cada monstro tem funções específicas para cada cor, e cada função altera os atributos do monstro de forma específica.
+
+Um pró desta abordagem é que cada classe de monstro pode implementar os métodos de cor de forma independente, permitindo comportamentos específicos para cada tipo.
+Uma desvantagem é que o código fica pouco escalável para adição de mais cores, já que temos que adicionar manualmente setters e getters para cada cor de cada monstro.
