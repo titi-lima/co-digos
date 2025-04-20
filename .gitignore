@@ -7,7 +7,7 @@
 !*/
 *.bin
 tempCodeRunnerFile
-tempCodeRunnerFile.c
+tempCodeRunnerFile.*
 *.DS_Store
 tempCodeRunnerFile.cpp
 tempCodeRunnerFile.csharp
